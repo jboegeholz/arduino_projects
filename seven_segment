@@ -2,7 +2,7 @@
  * 7 segment led
  */
 const int number_of_digits = 16;
-byte digits[number_of_digits]={
+byte digits[number_of_digits] PROGMEM ={
   B11111100, //0
   B01100000, //1
   B11011010, //2

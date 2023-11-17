@@ -29,10 +29,10 @@ void loop() {
         // Drucken Sie die Entfernung auf der seriellen Konsole.
         Serial.print("Distance: ");
         Serial.print(distance);
-        Serial.println("cm");
+        Serial.print("cm ");
         Serial.print("Strength: ");
         Serial.print(strength);
-        Serial.println("cm");
+        Serial.println("");
 
       }
     }

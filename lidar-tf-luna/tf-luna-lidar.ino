@@ -1,21 +1,40 @@
-#include <Arduino.h>
-#include <Wire.h>        // Instantiate the Wire library
-#include <TFLI2C.h>      // TFLuna-I2C Library v.0.1.1
+#include <SoftwareSerial.h>
 
-TFLI2C tflI2C;
+SoftwareSerial TFSerial(2, 3); // RX, TX
 
-int16_t  tfDist;    // distance in centimeters
-int16_t  tfAddr = TFL_DEF_ADR;  // Use this default I2C address
+void setup() {
+  Serial.begin(115200);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for Native USB only
+  }
+  Serial.println("Let's go");
 
-void setup(){
-    Serial.begin(115200);  // Initalize serial port
-    Wire.begin();           // Initalize Wire library
+
+  TFSerial.begin(115200);
+
 }
 
-void loop(){
+void loop() {
 
-    if(tflI2C.getData(tfDist, tfAddr)){
-        Serial.println(String(tfDist)+" cm / " + String(tfDist/2.54)+" inches");
+  if (TFSerial.available()) {
+
+    if (TFSerial.read() == 0x59) { // Check for the first header byte
+      if (TFSerial.read() == 0x59) { // Check for the second header byte
+        int distance = TFSerial.read() + TFSerial.read() * 256;
+        int strength = TFSerial.read() + TFSerial.read() * 256;
+        for (int i = 0; i < 3; i++) {
+          TFSerial.read();
+        }
+
+        // Drucken Sie die Entfernung auf der seriellen Konsole.
+        Serial.print("Distance: ");
+        Serial.print(distance);
+        Serial.println("cm");
+        Serial.print("Strength: ");
+        Serial.print(strength);
+        Serial.println("cm");
+
+      }
     }
-    delay(50);
+  }
 }

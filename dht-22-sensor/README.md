@@ -1,2 +1,3 @@
 # DHT-22
-https://funduino.de/anleitung-dht11-dht22
+
+https://www.arduino.cc/reference/en/libraries/dht-sensor-library/

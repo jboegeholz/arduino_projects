@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 
-SoftwareSerial TFSerial(2, 3); // RX, TX
+SoftwareSerial LidarSerial(2, 3); // RX, TX
 
 void setup() {
   Serial.begin(115200);
@@ -9,21 +9,20 @@ void setup() {
   }
   Serial.println("Let's go");
 
-
-  TFSerial.begin(115200);
+  LidarSerial.begin(115200);
 
 }
 
 void loop() {
 
-  if (TFSerial.available()) {
+  if (LidarSerial.available()) {
 
-    if (TFSerial.read() == 0x59) { // Check for the first header byte
-      if (TFSerial.read() == 0x59) { // Check for the second header byte
-        int distance = TFSerial.read() + TFSerial.read() * 256;
-        int strength = TFSerial.read() + TFSerial.read() * 256;
+    if (LidarSerial.read() == 0x59) { // Check for the first header byte
+      if (LidarSerial.read() == 0x59) { // Check for the second header byte
+        int distance = LidarSerial.read() + LidarSerial.read() * 256;
+        int strength = LidarSerial.read() + LidarSerial.read() * 256;
         for (int i = 0; i < 3; i++) {
-          TFSerial.read();
+          LidarSerial.read();
         }
 
         // Drucken Sie die Entfernung auf der seriellen Konsole.

@@ -6,3 +6,5 @@
 ## Temperatur-Sensor auswerten
 ## Motor ansteuern
 ## LIDAR auswerten
+
+https://www.rahner-edu.de/robotik/boe-shield-bot-arduino/fototransistor/

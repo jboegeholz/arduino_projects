@@ -8,3 +8,5 @@
 ## LIDAR auswerten
 
 https://www.rahner-edu.de/robotik/boe-shield-bot-arduino/fototransistor/
+
+https://www.youtube.com/watch?v=vMCLmSCfkiY

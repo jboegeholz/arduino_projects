@@ -1,105 +1,109 @@
-#define IR_SENSOR_RIGHT 11
-#define IR_SENSOR_LEFT 12
-#define MOTOR_SPEED 180
+const int MOTOR_SPEED = 210;
+const int DELTA = 45;
 
-//Right motor
-int enableRightMotor=6;
-int rightMotorPin1=7;
-int rightMotorPin2=8;
+const int ENABLE_RIGHT_MOTOR = 6;
+const int ENABLE_LEFT_MOTOR = 5;
 
-//Left motor
-int enableLeftMotor=5;
-int leftMotorPin1=9;
-int leftMotorPin2=10;
+const int RIGHT_MOTOR_PIN1 = 7;
+const int RIGHT_MOTOR_PIN2 = 8;
+
+const int LEFT_MOTOR_PIN1 = 9;
+const int LEFT_MOTOR_PIN2 = 10;
+
+const int IR_SENSOR_RIGHT = 11;
+const int IR_SENSOR_LEFT = 12;
 
 void setup()
 {
-  //The problem with TT gear motors is that, at very low pwm value it does not even rotate.
-  //If we increase the PWM value then it rotates faster and our robot is not controlled in that speed and goes out of line.
-  //For that we need to increase the frequency of analogWrite.
-  //Below line is important to change the frequency of PWM signal on pin D5 and D6
-  //Because of this, motor runs in controlled manner (lower speed) at high PWM value.
-  //This sets frequecny as 7812.5 hz.
-  TCCR0B = TCCR0B & B11111000 | B00000010 ;
+    //This sets frequency as 7812.5 hz.
+    TCCR0B = TCCR0B & B11111000 | B00000010 ;
 
-  // put your setup code here, to run once:
-  pinMode(enableRightMotor, OUTPUT);
-  pinMode(rightMotorPin1, OUTPUT);
-  pinMode(rightMotorPin2, OUTPUT);
+    pinMode(ENABLE_RIGHT_MOTOR, OUTPUT);
+    pinMode(RIGHT_MOTOR_PIN1, OUTPUT);
+    pinMode(RIGHT_MOTOR_PIN2, OUTPUT);
 
-  pinMode(enableLeftMotor, OUTPUT);
-  pinMode(leftMotorPin1, OUTPUT);
-  pinMode(leftMotorPin2, OUTPUT);
+    pinMode(ENABLE_LEFT_MOTOR, OUTPUT);
+    pinMode(LEFT_MOTOR_PIN1, OUTPUT);
+    pinMode(LEFT_MOTOR_PIN2, OUTPUT);
 
-  pinMode(IR_SENSOR_RIGHT, INPUT);
-  pinMode(IR_SENSOR_LEFT, INPUT);
-  rotateMotor(0,0);
+    pinMode(IR_SENSOR_RIGHT, INPUT);
+    pinMode(IR_SENSOR_LEFT, INPUT);
+
 }
 
 
 void loop()
 {
 
-  int rightIRSensorValue = digitalRead(IR_SENSOR_RIGHT);
-  int leftIRSensorValue = digitalRead(IR_SENSOR_LEFT);
+    int rightIRSensorValue = digitalRead(IR_SENSOR_RIGHT);
+    int leftIRSensorValue = digitalRead(IR_SENSOR_LEFT);
 
-  //If none of the sensors detects black line, then go straight
-  if (rightIRSensorValue == LOW && leftIRSensorValue == LOW)
-  {
-    rotateMotor(MOTOR_SPEED, MOTOR_SPEED);
-  }
-  //If right sensor detects black line, then turn right
-  else if (rightIRSensorValue == HIGH && leftIRSensorValue == LOW )
-  {
-      rotateMotor(-MOTOR_SPEED, MOTOR_SPEED);
-  }
-  //If left sensor detects black line, then turn left
-  else if (rightIRSensorValue == LOW && leftIRSensorValue == HIGH )
-  {
-      rotateMotor(MOTOR_SPEED, -MOTOR_SPEED);
-  }
-  //If both the sensors detect black line, then stop
-  else
-  {
-    rotateMotor(0, 0);
-  }
+    //If none of the sensors detects black line, then go straight
+    if (rightIRSensorValue == LOW && leftIRSensorValue == LOW)
+    {
+        driveStraight();
+    }
+    //If right sensor detects black line, then turn right
+    else if (rightIRSensorValue == HIGH && leftIRSensorValue == LOW )
+    {
+        turnRight();
+    }
+    //If left sensor detects black line, then turn left
+    else if (rightIRSensorValue == LOW && leftIRSensorValue == HIGH )
+    {
+        turnLeft();
+    }
+    //If both the sensors detect black line, then stop
+    else
+    {
+        stop();
+    }
 }
 
-
-void rotateMotor(int rightMotorSpeed, int leftMotorSpeed)
+void stop()
 {
+    digitalWrite(LEFT_MOTOR_PIN1, LOW);
+    digitalWrite(LEFT_MOTOR_PIN2, LOW);
 
-  if (rightMotorSpeed < 0)
-  {
-    digitalWrite(rightMotorPin1,LOW);
-    digitalWrite(rightMotorPin2,HIGH);
-  }
-  else if (rightMotorSpeed > 0)
-  {
-    digitalWrite(rightMotorPin1,HIGH);
-    digitalWrite(rightMotorPin2,LOW);
-  }
-  else
-  {
-    digitalWrite(rightMotorPin1,LOW);
-    digitalWrite(rightMotorPin2,LOW);
-  }
+    digitalWrite(RIGHT_MOTOR_PIN1, LOW);
+    digitalWrite(RIGHT_MOTOR_PIN2, LOW);
 
-  if (leftMotorSpeed < 0)
-  {
-    digitalWrite(leftMotorPin1,LOW);
-    digitalWrite(leftMotorPin2,HIGH);
-  }
-  else if (leftMotorSpeed > 0)
-  {
-    digitalWrite(leftMotorPin1,HIGH);
-    digitalWrite(leftMotorPin2,LOW);
-  }
-  else
-  {
-    digitalWrite(leftMotorPin1,LOW);
-    digitalWrite(leftMotorPin2,LOW);
-  }
-  analogWrite(enableRightMotor, abs(rightMotorSpeed));
-  analogWrite(enableLeftMotor, abs(leftMotorSpeed));
+    analogWrite(ENABLE_LEFT_MOTOR, 0);
+    analogWrite(ENABLE_RIGHT_MOTOR, 0);
+}
+
+void driveStraight()
+{
+    digitalWrite(LEFT_MOTOR_PIN1, HIGH);
+    digitalWrite(LEFT_MOTOR_PIN2,LOW);
+
+    digitalWrite(RIGHT_MOTOR_PIN1, HIGH);
+    digitalWrite(RIGHT_MOTOR_PIN2, LOW);
+
+    analogWrite(ENABLE_LEFT_MOTOR, MOTOR_SPEED);
+    analogWrite(ENABLE_RIGHT_MOTOR, MOTOR_SPEED);
+}
+
+void turnRight()
+{
+    digitalWrite(LEFT_MOTOR_PIN1, HIGH);
+    digitalWrite(LEFT_MOTOR_PIN2,LOW);
+
+    digitalWrite(RIGHT_MOTOR_PIN1, HIGH);
+    digitalWrite(RIGHT_MOTOR_PIN2, LOW);
+
+    analogWrite(ENABLE_LEFT_MOTOR, MOTOR_SPEED + DELTA);
+    analogWrite(ENABLE_RIGHT_MOTOR, MOTOR_SPEED - DELTA);
+}
+
+void turnLeft()
+{
+    digitalWrite(LEFT_MOTOR_PIN1, HIGH);
+    digitalWrite(LEFT_MOTOR_PIN2,LOW);
+
+    digitalWrite(RIGHT_MOTOR_PIN1, HIGH);
+    digitalWrite(RIGHT_MOTOR_PIN2, LOW);
+
+    analogWrite(ENABLE_LEFT_MOTOR, MOTOR_SPEED - DELTA);
+    analogWrite(ENABLE_RIGHT_MOTOR, MOTOR_SPEED + DELTA);
 }

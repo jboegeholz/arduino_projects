@@ -3,14 +3,13 @@
 int count1 = 0;
 int count2 = 0;
 
+TaskHandle_t task1_handle = NULL;
+TaskStatus_t xTaskDetails;
 void task1(void* parameters){
   for(;;){
     Serial.print("Task 1 counter: ");
     Serial.println(count1++);
     vTaskDelay(1000 / portTICK_PERIOD_MS);
-    if(count1 == 3){
-      vTaskDelete(NULL);
-    }
   }
 }
 
@@ -25,12 +24,12 @@ void task2(void* parameters){
 void setup() {
   Serial.begin(9600);
   xTaskCreate(
-    task1,      //function
-    "Task 1",   // function name
-    1000,       // stack size
-    NULL,       // paramters
-    1,          // priority
-    NULL        // handle
+    task1,        //function
+    "Task 1",     // function name
+    1000,         // stack size
+    NULL,         // paramters
+    1,            // priority
+    &task1_handle // handle
   );
   xTaskCreate(
     task2,
@@ -43,6 +42,13 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  vTaskGetInfo( task1_handle, &xTaskDetails, pdTRUE, eInvalid );
+  if(count1 == 5 && task1_handle != NULL){
+    Serial.println("Suspending Task 1");
+    vTaskSuspend(task1_handle);
+  }
+  if(count2 == 12 && task1_handle != NULL){
+    Serial.println("REsuming Task 1");
+    vTaskResume(task1_handle);
+  }
 }

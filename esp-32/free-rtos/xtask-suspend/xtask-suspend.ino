@@ -4,6 +4,7 @@ int count1 = 0;
 int count2 = 0;
 
 TaskHandle_t task1_handle = NULL;
+TaskHandle_t task2_handle = NULL;
 TaskStatus_t xTaskDetails;
 void task1(void* parameters){
   for(;;){
@@ -37,18 +38,26 @@ void setup() {
     1000,
     NULL,
     1,
-    NULL
+    &task2_handle
   );
 }
 
 void loop() {
-  vTaskGetInfo( task1_handle, &xTaskDetails, pdTRUE, eInvalid );
-  if(count1 == 5 && task1_handle != NULL){
-    Serial.println("Suspending Task 1");
-    vTaskSuspend(task1_handle);
+  Serial.println(eTaskGetState(task1_handle));
+  Serial.println(eTaskGetState(task2_handle));
+  if(count1 == 5 && task1_handle != NULL ){
+    eTaskState state = eTaskGetState(task1_handle) ;
+    if(state == eBlocked || state == eRunning){
+      Serial.println(state);
+      Serial.println("Suspending Task 1");
+      vTaskSuspend(task1_handle);
+      count1 = 0;
+    }
+
   }
   if(count2 == 12 && task1_handle != NULL){
-    Serial.println("REsuming Task 1");
+    Serial.println("Resuming Task 1");
     vTaskResume(task1_handle);
   }
+  delay(1000);
 }

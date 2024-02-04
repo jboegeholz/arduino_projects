@@ -15,7 +15,9 @@ const byte IR_SENSOR_LEFT = 12;
 
 void setup()
 {
-
+    //This sets frequency as 7812.5 hz.
+    TCCR0B = TCCR0B & B11111000 | B00000010;
+    
     pinMode(SPEED_RIGHT_MOTOR, OUTPUT);
     pinMode(RIGHT_MOTOR_PIN1, OUTPUT);
     pinMode(RIGHT_MOTOR_PIN2, OUTPUT);

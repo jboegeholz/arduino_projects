@@ -21,7 +21,7 @@ void setup() {
 
 void loop() {
 
-  potiValue = analogRead(A0);
+  potiValue = analogRead(POTI_IN);
   motorSpeed = (int)potiValue * factor;
   analogWrite(MOTOR_PWM, motorSpeed);// Then inject it to our motor
 }

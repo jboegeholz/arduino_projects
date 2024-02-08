@@ -1,7 +1,7 @@
-const byte MOTOR_PIN_1 = 8;
-const int MOTOR_PIN_2 = 9;
-const int MOTOR_PWM = 10;
-const int POTI_IN = A0;
+const byte MOTOR_PWM = 6;
+const byte MOTOR_PIN_1 = 7;
+const byte MOTOR_PIN_2 = 8;
+const byte POTI_IN = A0;
 
 int potiValue = 0;
 int motorSpeed = 0;
@@ -9,6 +9,8 @@ float factor = 0.249;
 
 
 void setup() {
+
+  TCCR0B = TCCR0B & B11111000 | B00000010;
   pinMode(MOTOR_PIN_1, OUTPUT);
   pinMode(MOTOR_PIN_2, OUTPUT);
   pinMode(MOTOR_PWM, OUTPUT);

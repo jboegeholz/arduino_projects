@@ -6,6 +6,7 @@ if __name__ == '__main__':
 
     s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
     s.connect((bt_addr, 1))
+    print("Connected to Bluetooth")
     for i in range(100):
         s.send(b'On\n')
         time.sleep(1)

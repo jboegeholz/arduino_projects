@@ -4,6 +4,8 @@
 
 Adafruit_NeoPixel modul_led_ring = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800); // Konfiguration des Objektes modul_led_ring
 
+int color[3]      = {80,10,88};
+
 void setup()
 {
   modul_led_ring.begin(); // Initialisierung des WS2812B LED Rings
@@ -12,10 +14,12 @@ void setup()
 
 void loop()
 {
-  modul_led_ring.setPixelColor(0, modul_led_ring.Color(12,0,0)); // Pixel 0 leuchtet in der RGB-Farbe Rot
-  modul_led_ring.setPixelColor(1, modul_led_ring.Color(12,0,0)); // Pixel 1 leuchtet in der RGB-Farbe Rot
-  modul_led_ring.setPixelColor(2, modul_led_ring.Color(12,0,0)); // Pixel 2 leuchtet in der RGB-Farbe Rot
-  modul_led_ring.setPixelColor(3, modul_led_ring.Color(12,0,0)); // Pixel 3 leuchtet in der RGB-Farbe Rot
+
+  modul_led_ring.setPixelColor(0, modul_led_ring.Color(color[0],color[1],color[2])); // Pixel 0 leuchtet in der RGB-Farbe Rot
+  modul_led_ring.setPixelColor(1, modul_led_ring.Color(color[0],color[1],color[2])); // Pixel 0 leuchtet in der RGB-Farbe Rot
+  modul_led_ring.setPixelColor(2, modul_led_ring.Color(color[0],color[1],color[2])); // Pixel 0 leuchtet in der RGB-Farbe Rot
+  modul_led_ring.setPixelColor(3, modul_led_ring.Color(color[0],color[1],color[2])); // Pixel 0 leuchtet in der RGB-Farbe Rot
+
 
   modul_led_ring.setPixelColor(4, modul_led_ring.Color(0,12,0)); // Pixel 4 leuchtet in der RGB-Farbe Grün
   modul_led_ring.setPixelColor(5, modul_led_ring.Color(0,12,0)); // Pixel 5 leuchtet in der RGB-Farbe Grün

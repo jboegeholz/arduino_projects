@@ -1,6 +1,6 @@
-// use lib version 2.0.1
 #include <IRremote.h>
 
+/* Variablen */
 
 int modul_infrarotSensor = 2;
 decode_results werte;
@@ -50,7 +50,30 @@ void loop()
       case 16734885:
         Serial.println("9 received");
         break;
-
+      case 16753245:
+        Serial.println("A received");
+        break;
+      case 16769565:
+        Serial.println("B received");
+        break;
+      case 16748655:
+        Serial.println("C received");
+        break;
+      case 16736925:
+        Serial.println("UP received");
+        break;
+      case 16754775:
+        Serial.println("DOWN received");
+        break;
+      case 16720605:
+        Serial.println("LEFT received");
+        break;
+      case 16761405:
+        Serial.println("RIGHT received");
+        break;
+      case 16712445:
+        Serial.println("X received");
+        break;
       default:
         Serial.println(werte.value, DEC);
 

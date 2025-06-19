@@ -45,8 +45,30 @@ def change_direction():
     if motor_running:
         send_pwm(slider.get())
 
+def on_key_press(event):
+    global motor_direction
+    key = event.keysym
+    if key in ('plus', 'KP_Add'):
+        new_val = min(slider.get() + 5, 255)
+        slider.set(new_val)
+        send_pwm(new_val)
+    elif key in ('minus', 'KP_Subtract'):
+        new_val = max(slider.get() - 5, 0)
+        slider.set(new_val)
+        send_pwm(new_val)
+    elif key == 'space':
+        toggle_motor()
+    elif key.lower() == 'r':
+        change_direction()
+    elif key.lower() == 'v':
+        change_direction()
+
 if __name__ == '__main__':
+    motor_on = False
+    current_direction = 'forward'
+
     root = tk.Tk()
+    root.geometry("400x300")  # Größeres Fenster
     root.title("Motorsteuerung via Arduino")
 
     slider = tk.Scale(root, from_=0, to=255, orient=tk.HORIZONTAL, label="PWM-Wert", command=send_pwm)
@@ -63,6 +85,9 @@ if __name__ == '__main__':
 
     dir_label = tk.Label(root, text="Richtung: Vorwärts")
     dir_label.pack(pady=5)
+
+    # Tastaturevents binden
+    root.bind("<Key>", on_key_press)
 
     root.mainloop()
 

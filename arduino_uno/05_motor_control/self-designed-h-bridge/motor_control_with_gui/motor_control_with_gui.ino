@@ -49,14 +49,16 @@ void stop()
 }
 void forward()
 {
-    digitalWrite(P_FET_Q1, HIGH);
+    digitalWrite(N_FET_Q2, LOW);
     digitalWrite(P_FET_Q3, LOW);
+    digitalWrite(P_FET_Q1, HIGH);
     current_PWM_port = N_FET_Q4;
 
 }
 void backwards()
 {
     digitalWrite(P_FET_Q1, LOW);
+    digitalWrite(N_FET_Q4, LOW);
     digitalWrite(P_FET_Q3, HIGH);
     current_PWM_port = N_FET_Q2;
 }

@@ -6,7 +6,7 @@ import serial.tools.list_ports
 def find_arduino_port():
     ports = serial.tools.list_ports.comports()
     for port in ports:
-        if "Arduino" in port.description or "ttyUSB" in port.device:
+        if "Arduino" in port.description or "ttyUSB" in port.device or "cu.usbmodem" in port.device:
             return port.device
     return None
 

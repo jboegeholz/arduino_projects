@@ -2921,6 +2921,12 @@
 		(uuid "4e2c191f-67ba-44f2-a93e-47e346166404")
 	)
 	(junction
+		(at 116.84 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5d028c68-acec-45d7-9ca1-ad90a71ffbf2")
+	)
+	(junction
 		(at 144.78 110.49)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2985,12 +2991,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a9385a51-5556-41cb-8785-c066dcb0f82b")
-	)
-	(junction
-		(at 118.11 110.49)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "af02ebd2-c3e9-4054-8c61-461d8d06411b")
 	)
 	(junction
 		(at 107.95 68.58)
@@ -3298,7 +3298,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 105.41) (xy 118.11 110.49)
+			(xy 116.84 105.41) (xy 116.84 110.49)
 		)
 		(stroke
 			(width 0)
@@ -3428,6 +3428,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.84 110.49) (xy 107.95 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "843b8935-59d6-49ec-b0a4-dbfacdc9a0c2")
+	)
+	(wire
+		(pts
 			(xy 130.81 46.99) (xy 144.78 46.99)
 		)
 		(stroke
@@ -3445,16 +3455,6 @@
 			(type default)
 		)
 		(uuid "8d296d6b-2ad0-48e9-9c8e-3bd0adfc9053")
-	)
-	(wire
-		(pts
-			(xy 118.11 110.49) (xy 107.95 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8d399116-7a75-4948-9037-fae3af12cdc5")
 	)
 	(wire
 		(pts
@@ -3578,7 +3578,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 93.98) (xy 107.95 93.98)
+			(xy 116.84 93.98) (xy 107.95 93.98)
 		)
 		(stroke
 			(width 0)
@@ -3618,7 +3618,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 97.79) (xy 118.11 93.98)
+			(xy 116.84 97.79) (xy 116.84 93.98)
 		)
 		(stroke
 			(width 0)
@@ -3635,6 +3635,16 @@
 			(type default)
 		)
 		(uuid "c9ceda28-d7e9-4f12-94e9-733a876dd089")
+	)
+	(wire
+		(pts
+			(xy 116.84 110.49) (xy 130.81 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cae02b40-53da-4007-bbeb-4158c344ffe1")
 	)
 	(wire
 		(pts
@@ -3795,16 +3805,6 @@
 			(type default)
 		)
 		(uuid "f7db9ffe-8e7b-482a-aa7b-b0cacec891ff")
-	)
-	(wire
-		(pts
-			(xy 130.81 110.49) (xy 118.11 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb067ada-3c43-4491-b67a-a951d413f1d5")
 	)
 	(symbol
 		(lib_id "Diode:1N4007")
@@ -4140,7 +4140,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10k"
 			(at 100.33 106.6799 0)
 			(effects
 				(font
@@ -4149,7 +4149,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 96.012 105.41 90)
 			(effects
 				(font
@@ -4210,7 +4210,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "330"
 			(at 96.52 71.1199 0)
 			(effects
 				(font
@@ -4219,7 +4219,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 95.758 69.85 90)
 			(effects
 				(font
@@ -4373,7 +4373,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
 			(at 58.42 85.09 0)
 			(effects
 				(font
@@ -4518,7 +4518,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10k"
 			(at 135.89 106.6799 0)
 			(effects
 				(font
@@ -4527,7 +4527,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 131.572 105.41 90)
 			(effects
 				(font
@@ -4663,7 +4663,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10k"
 			(at 96.52 57.1499 0)
 			(effects
 				(font
@@ -4672,7 +4672,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 92.202 55.88 90)
 			(effects
 				(font
@@ -4732,7 +4732,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "330"
 			(at 133.35 72.3899 0)
 			(effects
 				(font
@@ -4741,7 +4741,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 132.588 71.12 90)
 			(effects
 				(font
@@ -4785,7 +4785,7 @@
 	)
 	(symbol
 		(lib_id "Diode:1N4007")
-		(at 118.11 101.6 270)
+		(at 116.84 101.6 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4794,7 +4794,7 @@
 		(fields_autoplaced yes)
 		(uuid "a8442ae7-0138-4a95-9260-6f4c60467f79")
 		(property "Reference" "D3"
-			(at 120.65 100.3299 90)
+			(at 119.38 100.3299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4803,7 +4803,7 @@
 			)
 		)
 		(property "Value" "1N4007"
-			(at 120.65 102.8699 90)
+			(at 119.38 102.8699 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4812,7 +4812,7 @@
 			)
 		)
 		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
-			(at 113.665 101.6 0)
+			(at 112.395 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4821,7 +4821,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
-			(at 118.11 101.6 0)
+			(at 116.84 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4830,7 +4830,7 @@
 			)
 		)
 		(property "Description" "1000V 1A General Purpose Rectifier Diode, DO-41"
-			(at 118.11 101.6 0)
+			(at 116.84 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4839,7 +4839,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 118.11 101.6 0)
+			(at 116.84 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4848,7 +4848,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 118.11 101.6 0)
+			(at 116.84 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4967,7 +4967,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "330"
 			(at 116.84 81.28 90)
 			(effects
 				(font
@@ -4975,7 +4975,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 116.84 86.868 90)
 			(effects
 				(font
@@ -5035,7 +5035,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "330"
 			(at 78.74 76.2 90)
 			(effects
 				(font
@@ -5043,7 +5043,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 78.74 81.788 90)
 			(effects
 				(font
@@ -5338,7 +5338,7 @@
 		(dnp no)
 		(uuid "f3540797-717c-4baa-8d6b-06fdd1c3c356")
 		(property "Reference" "R3"
-			(at 133.096 50.038 0)
+			(at 133.604 52.324 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5346,8 +5346,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
-			(at 133.35 53.086 0)
+		(property "Value" "10k"
+			(at 133.604 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5355,7 +5355,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 129.032 54.61 90)
 			(effects
 				(font

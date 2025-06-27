@@ -2267,6 +2267,17 @@
 			(uuid "bd2f74b2-1aa6-4890-9182-10e319c7c4b5")
 		)
 		(embedded_fonts no)
+		(model "C:/workspace/PycharmProjects/arduino_projects/arduino_uno/05_motor_control/self-designed-h-bridge/kicad-files/part-models/wago-2601-3102/2601-3102.stp"
+			(offset
+				(xyz 4.5 -5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 90)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_THT:TO-92_Inline"
 		(layer "F.Cu")
@@ -2665,7 +2676,7 @@
 	(footprint "WAGO 2601-3102:CONN2_2601-3102_WAG"
 		(layer "F.Cu")
 		(uuid "71fe0a12-6711-4e3a-af6c-0880c272134f")
-		(at 266 53 -90)
+		(at 154.5 67.5 -90)
 		(tags "2601-3102 ")
 		(property "Reference" "J4"
 			(at 1.8 2.5 270)
@@ -3000,6 +3011,17 @@
 			(uuid "a4f8f9cf-98dc-4f71-8ce4-8a76f0c37da1")
 		)
 		(embedded_fonts no)
+		(model "C:/workspace/PycharmProjects/arduino_projects/arduino_uno/05_motor_control/self-designed-h-bridge/kicad-files/part-models/wago-2601-3102/2601-3102.stp"
+			(offset
+				(xyz 4.5 -5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 90)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_THT:TO-220F-3_Vertical"
 		(layer "F.Cu")
